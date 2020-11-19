@@ -6,7 +6,7 @@
 	<div class="container-fluid">
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-			<h1 class="h3 mb-0 text-gray-800">List Teachers</h1> </div>
+			<h1 class="h3 mb-0 text-gray-800">List Classes</h1> </div>
 		<!-- Content Row -->
 		<div class="row">
 			<div class="col-lg-12">
@@ -14,29 +14,25 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Teachers</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Classes</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered teachersList" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered classesList" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                        	<th>Teacher Name</th>
-                                            <th>Contact Number</th>
-                                            <th>Qualification</th>
-                                            <th>Gender</th>
-                                            <th>Created Dt</th>
+                                        	<th>Class Name</th>
+                                        	<th>Total Number of Students</th>
+                                        	<th>Created Dt</th>
 											<th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Teacher Name</th>
-                                            <th>Contact Number</th>
-                                            <th>Qualification</th>
-                                            <th>Gender</th>
-                                            <th>Created Dt</th>
-                       						<th>Action</th>
+                                        	<th>Class Name</th>
+                                        	<th>Total Number of Students</th>
+                                        	<th>Created Dt</th>
+											<th>Action</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -61,7 +57,7 @@
 	<!-- End of Content Wrapper -->
 	</div>
 	<!-- End of Page Wrapper -->
-	<script src="js/list-teachers.js"></script>
+	<script src="js/list-classes.js"></script>
 	<jsp:include page="footer.jsp" />
 	
 	

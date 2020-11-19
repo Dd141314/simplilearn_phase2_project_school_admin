@@ -14,5 +14,12 @@ public interface TeachersDAOInterface {
 	
 	public List<Teachers> listTeachers();
 	
+	public void deleteTeachers(Teachers teachers);
+	
+	public Teachers getTeachers(Teachers teachers);
+	
+	public void editTeachers(Teachers teachers);
+
+	
 
 }

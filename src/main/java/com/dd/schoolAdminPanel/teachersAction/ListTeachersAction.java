@@ -34,8 +34,13 @@ public class ListTeachersAction extends HttpServlet {
 
 
         	teachersList = teachersServiceInterface.listTeachers();
-            request.setAttribute("teachersList", teachersList); // Will be available as ${products} in JSP
-            request.getRequestDispatcher("listTeachers.jsp").forward(request, response);
+            listTeachersResponse.accumulate("success", true);
+            listTeachersResponse.accumulate("response", teachersList);
+            response.setContentType("text/json; charset=UTF-8");
+            out.print(listTeachersResponse);
+
+//            request.setAttribute("teachersList", teachersList); // Will be available as ${products} in JSP
+//            request.getRequestDispatcher("listTeachers.jsp").forward(request, response);
 
         } catch (Exception e) {
             log.error("Error while executing the method doGet in class ListTeachers " + e.getMessage());

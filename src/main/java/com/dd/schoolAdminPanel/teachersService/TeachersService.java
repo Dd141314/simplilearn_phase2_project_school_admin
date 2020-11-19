@@ -41,6 +41,49 @@ public class TeachersService implements TeachersServiceInterface {
 			log.info("Exiting the method listTeachers");
 		}
 	}
+	
+	@Override
+	public void deleteTeachers(Teachers teachers) throws Exception {
+		log.info("Entering Method deleteTeachers");
+		try {
+			this.teachersDAOInterface.deleteTeachers(teachers);
+		}catch(Exception e){
+			log.info("Error While executing the deleteTeachers "+ e.getMessage());
+			throw e;
+		}finally {
+			log.info("Exiting the method deleteTeachers");
+		}
+
+	}
+	
+	@Override
+	public Teachers getTeachers(Teachers teachers) throws Exception {
+		log.info("Entering Method getTeachers");
+		try {
+			return this.teachersDAOInterface.getTeachers(teachers);
+		}catch(Exception e){
+			log.info("Error While executing the getTeachers "+ e.getMessage());
+			throw e;
+		}finally {
+			log.info("Exiting the method getTeachers");
+		}
+	}
+	
+	@Override
+	public void editTeachers(Teachers teachers) throws Exception {
+		log.info("Entering Method editTeachers");
+		try {
+			this.teachersDAOInterface.editTeachers(teachers);
+		}catch(Exception e){
+			log.info("Error While executing the editTeachers "+ e.getMessage());
+			throw e;
+		}finally {
+			log.info("Exiting the method editTeachers");
+		}
+
+	}
+
+
 
 
 }

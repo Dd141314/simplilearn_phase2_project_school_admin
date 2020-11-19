@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.dd.schoolAdminPanel.constants.DataUtilsTO;
 
 @Entity
 @Table(name = "teachers")
@@ -53,6 +56,12 @@ public class Teachers {
     
     @Column(name = "updatedDt")
     private Date updatedDt;
+
+    @Transient
+    private String createdDtDisp;
+    
+    @Transient
+    private String updatedDtDisp;
 
 
     public Teachers(String firstName, String lastName, String contactNumber, String emailId, String qualification,
@@ -237,6 +246,31 @@ public class Teachers {
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
+
+	public String getCreatedDtDisp() {
+		if(this.createdDt != null) {
+			DataUtilsTO dataUtilsTO = new DataUtilsTO();
+			createdDtDisp = dataUtilsTO.formatDate_DD_MM_YYYY_HH_MM(createdDt);
+		}
+		return createdDtDisp;
+	}
+
+	public void setCreatedDtDisp(String createdDtDisp) {
+		this.createdDtDisp = createdDtDisp;
+	}
+
+	public String getUpdatedDtDisp() {
+		if(this.updatedDt != null) {
+			DataUtilsTO dataUtilsTO = new DataUtilsTO();
+			updatedDtDisp = dataUtilsTO.formatDate_DD_MM_YYYY_HH_MM(updatedDt);
+		}
+		return updatedDtDisp;
+	}
+
+	public void setUpdatedDtDisp(String updatedDtDisp) {
+		
+		this.updatedDtDisp = updatedDtDisp;
+	}
 
 
 
