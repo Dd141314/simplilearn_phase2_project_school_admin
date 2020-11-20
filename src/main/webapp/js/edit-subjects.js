@@ -2,27 +2,20 @@ $(document).ready(function() {
 
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var teacherId = url.searchParams.get("teacherId");
+    var subjectId = url.searchParams.get("subjectId");
     $.ajax({
         type: "POST",
-        url: "GetTeachers",
+        url: "GetSubjects",
         data: {
-            "teachersId": teacherId
+            "subjectsId": subjectId
         },
         cache: false,
         success: function(data) {
 			if(data.response != null){
-				$('#editTeachers').trigger("reset");
-				$('input[name="firstName"]').val(data.response.firstName);
-				$('input[name="lastName"]').val(data.response.lastName);
-				$('input[name="contactNumber"]').val(data.response.contactNumber);
-				$('input[name="emailAddress"]').val(data.response.emailId);
-				$('input[name="qualification"]').val(data.response.qualification);
-				$('input[name="age"]').val(data.response.age);
-				$('select[name="martialStatus"]').val(data.response.martialStatus);
-				$('select[name="gender"]').val(data.response.gender);
-				$('textarea[name="address"]').val(data.response.address);
-				$('input[name="teacherId"]').val(data.response.teacherId);
+				$('#editSubjects').trigger("reset");
+				$('input[name="subjectName"]').val(data.response.subjectName);
+				$('textarea[name="subjectDescription"]').val(data.response.subjectDescription);
+				$('input[name="subjectId"]').val(data.response.subjectId);
 
 			}else{
 				snackBarMessage('Something went wrong, Kindly try again!');
@@ -35,36 +28,24 @@ $(document).ready(function() {
     });
 
 
-    $("#editTeachers").validate({
+    $("#editSubjects").validate({
         rules: {
-            firstName: "required",
-            contactNumber: {
-                required: true,
-                minlength: 10
-            },
-            emailAddress: {
-                required: true,
-                email: true
-            },
-            qualification: "required",
+            subjectName: "required",
+			subjectDescription : {
+				maxlength: 500
+			}
 
         },
         messages: {
-            firstName: "Enter the First Name",
-            contactNumber: {
-                required: "Enter the Contact Number",
-                minlength: "Please enter a valid Contact number (minimum length of 10 numbers)"
-            },
-            emailAddress: {
-                required: "Enter the Email Address",
-                email: "Enter input is not a valid email address"
-            },
-            qualification: "Enter the Qualification",
+            subjectName: "Enter the Subject Name",
+			subjectDescription : {
+				maxlength: "Enter the Subject Description of maximum 500 characters"
+			}
 
-        },
-        submitHandler: function(form) {
-            var formURL = $("#editTeachers").attr("action");
-            buttonDisableEnable("#submitFormEditTeachers", true);
+        },        
+		submitHandler: function(form) {
+            var formURL = $("#editSubjects").attr("action");
+            buttonDisableEnable("#submitFormEditSubjects", true);
             $.ajax({
                 type: "POST",
                 url: formURL,
@@ -73,17 +54,17 @@ $(document).ready(function() {
                 contentType: false,
                 processData: false,
                 success: function(data) {
-                    buttonDisableEnable("#submitFormEditTeachers", false);
+                    buttonDisableEnable("#submitFormEditSubjects", false);
                     if (data.success == true) {
                         snackBarMessage(data.message);
-                        $('#editTeachers').trigger("reset");
-						pageRedirect('listTeachers.jsp');	
+                        $('#editSubjects').trigger("reset");
+						pageRedirect('listSubjects.jsp');	
                     } else {
                         snackBarMessage(data.message);
                     }
                 },
                 error: function(e) {
-                    buttonDisableEnable("#submitFormEditTeachers", false);
+                    buttonDisableEnable("#submitFormEditSubjects", false);
                     snackBarMessage('Error While logging to the Panel, Kindly Contact Admin!');
                 }
 

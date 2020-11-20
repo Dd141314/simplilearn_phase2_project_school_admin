@@ -47,6 +47,6 @@
 	</div>
 	<!-- End of Page Wrapper -->
 	
-	<script src="js/edit-teachers.js"></script>
+	<script src="js/edit-subjects.js"></script>
 	<jsp:include page="footer.jsp" />
 	

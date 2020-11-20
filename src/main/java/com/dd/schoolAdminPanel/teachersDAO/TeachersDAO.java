@@ -18,7 +18,7 @@ public class TeachersDAO implements TeachersDAOInterface {
     private Log log = LogFactory.getLog(TeachersDAO.class);
 
     @Override
-    public void addTeachers(Teachers teachers) {
+    public synchronized void addTeachers(Teachers teachers) {
         log.info("Entering Method addTeachers ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -47,7 +47,7 @@ public class TeachersDAO implements TeachersDAOInterface {
     
     
     @Override
-    public Session userDetailsSessionFactory() {
+    public synchronized Session userDetailsSessionFactory() {
         SessionFactory sessionFactory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Teachers.class)
@@ -60,7 +60,7 @@ public class TeachersDAO implements TeachersDAOInterface {
 
 
 	@Override
-	public List<Teachers> listTeachers() {
+	public synchronized List<Teachers> listTeachers() {
         log.info("Entering Method listTeachers ");
         Session session = this.userDetailsSessionFactory();
         List<Teachers> teachersList = new ArrayList<Teachers>();
@@ -85,7 +85,7 @@ public class TeachersDAO implements TeachersDAOInterface {
 	
 	
 	@Override
-    public void deleteTeachers(Teachers teachers) {
+    public synchronized void deleteTeachers(Teachers teachers) {
         log.info("Entering Method deleteTeachers ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -113,7 +113,7 @@ public class TeachersDAO implements TeachersDAOInterface {
     }
 	
 	@Override
-	public Teachers getTeachers(Teachers teachers) {
+	public synchronized Teachers getTeachers(Teachers teachers) {
         log.info("Entering Method getTeachers ");
         Session session = this.userDetailsSessionFactory();
         Teachers teachersResponse = new Teachers();
@@ -147,7 +147,7 @@ public class TeachersDAO implements TeachersDAOInterface {
 	
 	
     @Override
-    public void editTeachers(Teachers teachers) {
+    public synchronized void editTeachers(Teachers teachers) {
         log.info("Entering Method editTeachers ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -185,9 +185,5 @@ public class TeachersDAO implements TeachersDAOInterface {
 
         }
     }
-
-
-
-    
  
 }

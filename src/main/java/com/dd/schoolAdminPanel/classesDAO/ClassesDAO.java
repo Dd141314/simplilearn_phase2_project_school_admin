@@ -18,7 +18,7 @@ public class ClassesDAO implements ClassesDAOInterface {
     private Log log = LogFactory.getLog(ClassesDAO.class);
 
     @Override
-    public void addClasses(Classes classes) {
+    public synchronized void addClasses(Classes classes) {
         log.info("Entering Method addClasses ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -47,7 +47,7 @@ public class ClassesDAO implements ClassesDAOInterface {
     
     
     @Override
-    public Session userDetailsSessionFactory() {
+    public synchronized Session userDetailsSessionFactory() {
         SessionFactory sessionFactory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Classes.class)
@@ -60,7 +60,7 @@ public class ClassesDAO implements ClassesDAOInterface {
 
 
 	@Override
-	public List<Classes> listClasses() {
+	public synchronized List<Classes> listClasses() {
         log.info("Entering Method listClasses ");
         Session session = this.userDetailsSessionFactory();
         List<Classes> classesList = new ArrayList<Classes>();
@@ -85,7 +85,7 @@ public class ClassesDAO implements ClassesDAOInterface {
 	
 	
 	@Override
-    public void deleteClasses(Classes classes) {
+    public synchronized void deleteClasses(Classes classes) {
         log.info("Entering Method deleteClasses ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -113,7 +113,7 @@ public class ClassesDAO implements ClassesDAOInterface {
     }
 	
 	@Override
-	public Classes getClasses(Classes classes) {
+	public synchronized Classes getClasses(Classes classes) {
         log.info("Entering Method getClasses ");
         Session session = this.userDetailsSessionFactory();
         Classes classesResponse = new Classes();
@@ -147,7 +147,7 @@ public class ClassesDAO implements ClassesDAOInterface {
 	
 	
     @Override
-    public void editClasses(Classes classes) {
+    public synchronized void editClasses(Classes classes) {
         log.info("Entering Method editClasses ");
         Session session = this.userDetailsSessionFactory();
         try {

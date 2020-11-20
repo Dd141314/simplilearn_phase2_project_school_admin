@@ -18,7 +18,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
     private Log log = LogFactory.getLog(SubjectsDAO.class);
 
     @Override
-    public void addSubjects(Subjects subjects) {
+    public synchronized void addSubjects(Subjects subjects) {
         log.info("Entering Method addSubjects ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -47,7 +47,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
     
     
     @Override
-    public Session userDetailsSessionFactory() {
+    public synchronized Session userDetailsSessionFactory() {
         SessionFactory sessionFactory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Subjects.class)
@@ -60,7 +60,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
 
 
 	@Override
-	public List<Subjects> listSubjects() {
+	public synchronized List<Subjects> listSubjects() {
         log.info("Entering Method listSubjects ");
         Session session = this.userDetailsSessionFactory();
         List<Subjects> subjectsList = new ArrayList<Subjects>();
@@ -85,7 +85,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
 	
 	
 	@Override
-    public void deleteSubjects(Subjects subjects) {
+    public synchronized void deleteSubjects(Subjects subjects) {
         log.info("Entering Method deleteSubjects ");
         Session session = this.userDetailsSessionFactory();
         try {
@@ -113,7 +113,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
     }
 	
 	@Override
-	public Subjects getSubjects(Subjects subjects) {
+	public synchronized Subjects getSubjects(Subjects subjects) {
         log.info("Entering Method getSubjects ");
         Session session = this.userDetailsSessionFactory();
         Subjects subjectsResponse = new Subjects();
@@ -147,7 +147,7 @@ public class SubjectsDAO implements SubjectsDAOInterface {
 	
 	
     @Override
-    public void editSubjects(Subjects subjects) {
+    public synchronized void editSubjects(Subjects subjects) {
         log.info("Entering Method editSubjects ");
         Session session = this.userDetailsSessionFactory();
         try {

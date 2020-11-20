@@ -43,17 +43,17 @@ try{
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                MODULES
+                MASTER MODULES
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubjectsModule"
+                    aria-expanded="true" aria-controls="collapseSubjectsModule">
                     <i class="fas fa-book"></i>
                     <span>Subjects</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseSubjectsModule" class="collapse" aria-labelledby="headingSubjectsModule" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Subjects Modules:</h6>
                         <a class="collapse-item" href="addSubjects.jsp">Add Subjects</a>
@@ -63,12 +63,12 @@ try{
             </li>
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeachersModule"
+                    aria-expanded="true" aria-controls="collapseTeachersModule">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Teachers</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTeachersModule" class="collapse" aria-labelledby="headingTeachersModule" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Teachers Modules:</h6>
                         <a class="collapse-item" href="addTeachers.jsp">Add Teachers</a>
@@ -78,12 +78,12 @@ try{
             </li>
             
 			<li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClassesModule"
+                    aria-expanded="true" aria-controls="collapseClassesModule">
 					<i class="fas fa-graduation-cap"></i>                    
 				<span>Classes</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseClassesModule" class="collapse" aria-labelledby="headingClassesModule" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Classes Modules:</h6>
                         <a class="collapse-item" href="addClasses.jsp">Add Classes</a>
@@ -92,14 +92,40 @@ try{
                 </div>
             </li>
             
+			<!-- Heading -->
+            <div class="sidebar-heading">
+                MAPPING MODULES
+            </div>
+            
+			<!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMappingModule"
+                    aria-expanded="true" aria-controls="collapseMappingModule">
+                    <i class="fa fa-tasks"></i>
+                    <span>Mapping</span>
+                </a>
+                <div id="collapseMappingModule" class="collapse" aria-labelledby="headingCollapseMappingModule" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Classes Mapping:</h6>
+                        <a class="collapse-item" href="addClassesSubjectsMapping.jsp">Classes Subjects Mapping</a>
+                        <a class="collapse-item" href="listClassesSubjectsMapping.jsp">List Classes Subjects</a>
+                    </div>
+                </div>
+				<div id="collapseMappingModule" class="collapse" aria-labelledby="headingCollapseMappingModule" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Teachers Mapping:</h6>
+                        <a class="collapse-item" href="addTeachersClassesSubjectsMapping.jsp">Teachers Classes Mapping</a>
+                        <a class="collapse-item" href="listTeachersClassesSubjectsMapping.jsp">List Teachers Classes</a>
+                    </div>
+                </div>
+            </li>
+            
+            
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -114,7 +140,7 @@ try{
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -128,7 +154,7 @@ try{
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= session.getAttribute("VITAL_USER").toString() %></span>
-                                <img class="img-profile rounded-circle"
+                                <img class="img-profile"
                                     src="images/user_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -158,4 +184,6 @@ try{
 
                 </nav>
                 <!-- End of Topbar -->
+                
 <jsp:include page="footer.jsp" />
+

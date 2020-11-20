@@ -15,7 +15,7 @@ public class UserManagementDAO implements UserManagementDAOInterface {
     private Log log = LogFactory.getLog(UserManagementDAO.class);
 
     @Override
-    public UserDetails userLoginAuthentication(UserDetails userDetails) {
+    public synchronized UserDetails userLoginAuthentication(UserDetails userDetails) {
         log.info("Entering Method userLoginAuthentication ");
         Session session = this.userDetailsSessionFactory();
         UserDetails UserDetailsResponse;
@@ -49,7 +49,7 @@ public class UserManagementDAO implements UserManagementDAOInterface {
     }
 
     @Override
-    public Session userDetailsSessionFactory() {
+    public synchronized Session userDetailsSessionFactory() {
         // TODO Auto-generated method stub
         SessionFactory sessionFactory = new Configuration()
             .configure("hibernate.cfg.xml")
