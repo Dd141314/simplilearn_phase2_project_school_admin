@@ -17,7 +17,7 @@
 
 ## Git Details
 
-> In the Adding Classes-Subjects menu, Admin can able to Map any number of unique Classes-Subjects to the School.
+> You can download our LearnersAcademy Source Code by Clicking on this link (https://github.com/Dd141314/simplilearn_phase2_project_school_admin)
 
 > In the Adding Classes-Subjects menu, Submit Button is used to submit the mapped Classes-Subjects values to the database and clear button is for clearing the form.
 
