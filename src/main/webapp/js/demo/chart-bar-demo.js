@@ -32,7 +32,6 @@ var ctx = document.getElementById("myBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "#4e73df",
@@ -54,14 +53,43 @@ var myBarChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'month'
+          unit: 'class'
         },
         gridLines: {
           display: false,
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          callback: function(value, index, values) {
+	
+	    $.ajax({
+        type: "GET",
+        url: "ListTeachersClassesSubjectsMapping",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(response) {
+            var jsonObject = response.response;
+            var result = jsonObject.map(function(item) {
+                var deleteButton1 = '<button  title="Click to delete" onclick="deleteTeachersClassesSubjectsMapping(' + item.teachersClassesSubjectsMappingId + ',' + "'" + item.className + "'" + ',' + "'" + item.subjectName + "'" + ',' + "'" + item.teacherName + "'" + ' )"  class = "btn btn-danger btn-circle btn-sm" id="deleteTeachersClassesSubjectsMappingBtn" ><i class="fas fa-trash"></i></button> '
+                var result = [];
+                result.push(item.teacherName);
+                result.push(item.className);
+                result.push(item.subjectName);
+                result.push(item.createdDtDisp);
+                result.push(deleteButton1);
+                return result;
+            });
+            myTable.rows.add(result);
+            myTable.draw();
+        },
+        failure: function() {
+            $(".teachersClassesSubjectsMappingList").append(" Error when fetching data please contact administrator");
+        }
+    });
+
+            return '$' + number_format(value);
+          }
+
         },
         maxBarThickness: 25,
       }],

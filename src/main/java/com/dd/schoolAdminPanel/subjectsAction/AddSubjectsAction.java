@@ -69,8 +69,13 @@ public class AddSubjectsAction extends HttpServlet {
 
         } catch (Exception e) {
             log.error("Error while executing the method doPost in class AddSubjects " + e.getMessage());
-            addSubjectsResponse.accumulate("failure", true);
-            addSubjectsResponse.accumulate("message", e.getMessage());
+            if(e.getMessage().contains("ConstraintViolationException")) {
+            	addSubjectsResponse.accumulate("failure", true);
+            	addSubjectsResponse.accumulate("message", "Subject Already Exists, Kindly try to add different Subjects");
+        	}else {
+        		addSubjectsResponse.accumulate("failure", true);
+        		addSubjectsResponse.accumulate("message", e.getMessage());
+        	}
             response.setContentType("text/json; charset=UTF-8");
             out.print(addSubjectsResponse);
         } finally {

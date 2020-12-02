@@ -81,8 +81,13 @@ public class AddClassesAction extends HttpServlet {
 
         } catch (Exception e) {
             log.error("Error while executing the method doPost in class AddClasses " + e.getMessage());
-            addClassesResponse.accumulate("failure", true);
-            addClassesResponse.accumulate("message", e.getMessage());
+            if(e.getMessage().contains("ConstraintViolationException")) {
+            	addClassesResponse.accumulate("failure", true);
+            	addClassesResponse.accumulate("message", "Class Already Exists, Kindly try to add different Classes");
+        	}else {
+        		addClassesResponse.accumulate("failure", true);
+        		addClassesResponse.accumulate("message", e.getMessage());
+        	}
             response.setContentType("text/json; charset=UTF-8");
             out.print(addClassesResponse);
         } finally {

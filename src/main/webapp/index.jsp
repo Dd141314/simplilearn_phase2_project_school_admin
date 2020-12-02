@@ -32,12 +32,7 @@
 										<div class="form-group">
                                             <input type="submit" id="loginButton" name="loginButton" class="btn btn-primary btn-user btn-block" value="Login">
                                         </div>
-                                        <hr>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
                                     <div id="snackbar"></div>
                                 </div>
                             </div>

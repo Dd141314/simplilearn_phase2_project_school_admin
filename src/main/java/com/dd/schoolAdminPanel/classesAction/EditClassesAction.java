@@ -75,7 +75,7 @@ public class EditClassesAction extends HttpServlet {
             classesServiceInterface.editClasses(classes);
 
             editClassesResponse.accumulate("success", true);
-            editClassesResponse.accumulate("message", "Successfully Teacher Values Updated");
+            editClassesResponse.accumulate("message", "Successfully Class Values Updated");
             response.setContentType("text/json; charset=UTF-8");
             out.print(editClassesResponse);
 
